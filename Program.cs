@@ -1,3 +1,4 @@
+using GeneralStoreAPI.Data;
 using Microsoft.EntityFrameworkCore;
 // using GeneralStoreAPI;
 
@@ -10,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// builder.Services.AddDbContext<GeneralStoreDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<GeneralStoreDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("GeneralStoreDB")));
 
 var app = builder.Build();
 

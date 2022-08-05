@@ -21,7 +21,7 @@ namespace GeneralStoreAPI.Controllers
 
         //! POST
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(ProductEdit newProduct) 
+        public async Task<IActionResult> CreateProduct([FromForm]ProductEdit newProduct) 
         {
             Product product = new Product() {
                 Name = newProduct.Name,
@@ -84,10 +84,10 @@ namespace GeneralStoreAPI.Controllers
         //! DELETE
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> DeleteProduct([FromForm] int id)
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
         {
             var product = await _db.Products.FindAsync(id);
-            if(product is null)
+            if(product == null)
             {
                 return NotFound();
             }
